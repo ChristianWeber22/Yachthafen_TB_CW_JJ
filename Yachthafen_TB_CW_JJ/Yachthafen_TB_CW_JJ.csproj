@@ -135,6 +135,9 @@
     <None Include="Resources\icons8-segelboot-60.png" />
     <None Include="Resources\icons8-offenes-buch-60.png" />
     <None Include="Resources\icons8-geschlechtsneutraler-benutzer-60.png" />
+    <None Include="Resources\icons8-macos-schließen-60.png" />
+    <None Include="Resources\icons8-macos-schließen-30.png" />
+    <None Include="Resources\icons8-macos-minimieren-30.png" />
     <Content Include="Resources\imagesa.jpg" />
     <None Include="Resources\imagesa1.jpg" />
     <None Include="Resources\1775151.jpg" />

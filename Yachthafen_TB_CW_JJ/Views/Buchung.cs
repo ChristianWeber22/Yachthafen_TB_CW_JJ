@@ -310,7 +310,6 @@ namespace Yachthafen_TB_CW_JJ
 
         private bool CheckOverlap(DateTime start1, DateTime end1, DateTime start2, DateTime end2)
         {
-            // Überprüfen, ob das erste Intervall vor dem zweiten endet oder umgekehrt
             if (end1 < start2 || end2 < start1)
             {
                 return false;
@@ -321,7 +320,6 @@ namespace Yachthafen_TB_CW_JJ
                 return true;
             }
 
-            // Wenn die obere Bedingung nicht erfüllt ist, gibt es eine Überlappung
             return true;
         }
 

@@ -93,6 +93,36 @@ namespace Yachthafen_TB_CW_JJ.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_macos_minimieren_30 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-macos-minimieren-30", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_macos_schließen_30 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-macos-schließen-30", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_macos_schließen_60 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-macos-schließen-60", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_offenes_buch_60 {
             get {
                 object obj = ResourceManager.GetObject("icons8-offenes-buch-60", resourceCulture);
