@@ -140,7 +140,6 @@ namespace Yachthafen_TB_CW_JJ
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Liegeplatz buchen";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // gesamtpreisText
             // 

@@ -48,6 +48,7 @@ namespace Yachthafen_TB_CW_JJ
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
             this.FormBorderStyle = FormBorderStyle.None;
             this.ControlBox = false;
 
@@ -55,9 +56,6 @@ namespace Yachthafen_TB_CW_JJ
             label1.MouseMove += new MouseEventHandler(panel1_MouseMove);
             label1.MouseUp += new MouseEventHandler(panel1_MouseUp);
             label1.BringToFront();
-
-
-
         }
 
         private void liegeplatzButton_Click(object sender, EventArgs e)
@@ -65,16 +63,11 @@ namespace Yachthafen_TB_CW_JJ
             liegeplatzButton.BackColor = System.Drawing.ColorTranslator.FromHtml("#494c72");
             buchungButton.BackColor = System.Drawing.ColorTranslator.FromHtml("#001928");
             kundenButton.BackColor = System.Drawing.ColorTranslator.FromHtml("#001928");
-
             panel1.Controls.Clear();
-
             Liegeplatzverwaltung form2 = new Liegeplatzverwaltung() { TopLevel = false, TopMost = true };
             form2.FormBorderStyle = FormBorderStyle.None;
             form2.Dock = DockStyle.Fill;
-           
             panel1.Controls.Add(form2);
-
-           
             form2.Show();            
         }
 
@@ -84,13 +77,10 @@ namespace Yachthafen_TB_CW_JJ
             buchungButton.BackColor = System.Drawing.ColorTranslator.FromHtml("#494c72");
             kundenButton.BackColor = System.Drawing.ColorTranslator.FromHtml("#001928");
             panel1.Controls.Clear();
-            
             Buchung form3 = new Buchung() { TopLevel = false, TopMost = true };
             form3.FormBorderStyle = FormBorderStyle.None;
             form3.Dock = DockStyle.Fill;
-
             panel1.Controls.Add(form3);
-
             form3.Show();
         }
 
@@ -100,13 +90,10 @@ namespace Yachthafen_TB_CW_JJ
             buchungButton.BackColor = System.Drawing.ColorTranslator.FromHtml("#001928");
             kundenButton.BackColor = System.Drawing.ColorTranslator.FromHtml("#494c72");
             panel1.Controls.Clear();
-
             Kunden form4 = new Kunden() { TopLevel = false, TopMost = true };
             form4.FormBorderStyle = FormBorderStyle.None;
             form4.Dock = DockStyle.Fill;
-
             panel1.Controls.Add(form4);
-
             form4.Show();
         }
 

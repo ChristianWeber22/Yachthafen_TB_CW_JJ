@@ -16,7 +16,7 @@ namespace Yachthafen_TB_CW_JJ
 
         Controller controller = new Controller();
 
-    
+
 
         public Kunden()
         {
@@ -26,10 +26,7 @@ namespace Yachthafen_TB_CW_JJ
             kundenTable.Columns["id"].Visible = false;
         }
 
-        private void form4_Load(object sender, EventArgs e)
-        {
 
-        }        
 
         private void addNewRow_Click(object sender, EventArgs e)
         {
@@ -44,17 +41,6 @@ namespace Yachthafen_TB_CW_JJ
             }
         }
 
-        private void PopulateDataGridView()
-        {
-
-  
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
 
         private void form2_Resize(object sender, EventArgs e)
         {
@@ -70,19 +56,19 @@ namespace Yachthafen_TB_CW_JJ
                 controller.UpdateAllKunden(data);
                 kundenTable.Columns["id"].Visible = false;
                 new ToastContentBuilder()
-    .AddArgument("action", "viewConversation")
-    .AddArgument("conversationId", 9813)
-    .AddText("Mitteilung")
-    .AddText("Der Kunde wurde erfolgreich gespeichert!")
-    .Show(); 
+                     .AddArgument("action", "viewConversation")
+                     .AddArgument("conversationId", 9813)
+                     .AddText("Mitteilung")
+                     .AddText("Die Kundenliste wurde erfolgreich gespeichert!")
+                     .Show();
 
             }
             catch (Exception error)
             {
                 MessageBox.Show(error.Message);
-                
+
             }
-        
+
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -95,12 +81,15 @@ namespace Yachthafen_TB_CW_JJ
             }
             else
             {
-                MessageBox.Show("Kein Kunden ausgewählt!");
+                new ToastContentBuilder()
+                  .AddArgument("action", "viewConversation")
+                  .AddArgument("conversationId", 9813)
+                  .AddText("Mitteilung")
+                  .AddText("Kein Kunde ausgewählt!")
+                  .Show();
 
             }
         }
-
-      
 
 
     }

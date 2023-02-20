@@ -32,26 +32,19 @@ namespace Yachthafen_TB_CW_JJ
         public Buchung()
         {
             InitializeComponent();
-            PopulateDataGridView();
         }
 
         private void form3_Load(object sender, EventArgs e)
         {
-
             DataTable dataTable = controller.showAllBuchungen();
             buchungTable.ReadOnly = true;
             buchungTable.DataSource = dataTable;
 
             buchungTable.Columns["id"].Visible = false;
 
-
-
             loadKundeDaten();
             loadBuchungenDaten();
             loadLiegeplatzDaten();
-
-        
-
 
             comboBox2.Enabled = false;
             addNewRow.Enabled = false;
@@ -99,8 +92,7 @@ namespace Yachthafen_TB_CW_JJ
         private void loadKundeDaten()
         {
             kundenListe.Clear();
-            //Kunden laden
-             kundenDaten = controller.showAllKunden();
+            kundenDaten = controller.showAllKunden();
             foreach (DataRow item in kundenDaten.Rows)
             {
                 Kunde kunde = new Kunde(
@@ -140,7 +132,7 @@ namespace Yachthafen_TB_CW_JJ
             //Berechne Endpreis
             foreach (LiegeplatzData item in liegeplatzListe)
             {
-                if(item.Id == (int)comboBox2.SelectedValue)
+                if (item.Id == (int)comboBox2.SelectedValue)
                 {
                     tagespreis = item.Tagespreis;
 
@@ -151,7 +143,7 @@ namespace Yachthafen_TB_CW_JJ
 
             bool check = controller.addNewBuchung(selectedKunde, selectedLiegeplatz, startDateString, endDateString, endpreis);
 
-            if(check)
+            if (check)
             {
                 DataTable dataTable = controller.showAllBuchungen();
                 loadKundeDaten();
@@ -167,7 +159,6 @@ namespace Yachthafen_TB_CW_JJ
                         .AddText("Mitteilung")
                         .AddText("Die Buchung wurde erfolgreich angelegt!")
                         .Show();
-
             }
 
         }
@@ -176,43 +167,31 @@ namespace Yachthafen_TB_CW_JJ
         {
             if (this.buchungTable.SelectedRows.Count > 0 && this.buchungTable.SelectedRows[0].Index != this.buchungTable.Rows.Count - 1)
             {
+                try
+                {
+                    DataGridViewRow row = this.buchungTable.SelectedRows[0];
+                    controller.deleteSelectedBuchung((int)row.Cells["id"].Value);
+                    string bezeichung = row.Cells["bezeichnung"].Value.ToString();
+                    this.buchungTable.Rows.RemoveAt(this.buchungTable.SelectedRows[0].Index);
+                    new ToastContentBuilder()
+                        .AddArgument("action", "viewConversation")
+                        .AddArgument("conversationId", 9813)
+                        .AddText("Mitteilung")
+                        .AddText("Die Buchung wurde erfolgreich entfernt!")
+                        .Show();
 
+                }
+                catch (Exception error)
+                {
+                    MessageBox.Show(error.Message);
+                }
             }
 
-            try
-            {
 
-                DataGridViewRow row = this.buchungTable.SelectedRows[0];
-
-                //Delete Buchung
-                controller.deleteSelectedBuchung((int)row.Cells["id"].Value);
-
-                string bezeichung = row.Cells["bezeichung"].Value.ToString();
-
-          
-
-
-                this.buchungTable.Rows.RemoveAt(this.buchungTable.SelectedRows[0].Index);
-
-
-            }
-            catch (Exception error)
-            {
-                MessageBox.Show(error.Message);
-
-            }
         }
 
 
-        private void PopulateDataGridView()
-        {
-    
-        }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
 
         private void form2_Resize(object sender, EventArgs e)
         {
@@ -224,9 +203,7 @@ namespace Yachthafen_TB_CW_JJ
 
 
 
-        private void idBuchung_TextChanged(object sender, EventArgs e)
-        {
-        }
+  
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -250,7 +227,7 @@ namespace Yachthafen_TB_CW_JJ
 
                 foreach (Kunde item in kundenListe)
                 {
-                    if(item.Id == Int32.Parse(selectedKundeId))
+                    if (item.Id == Int32.Parse(selectedKundeId))
                     {
                         selectedKunde = item;
                         break;
@@ -258,27 +235,27 @@ namespace Yachthafen_TB_CW_JJ
                 }
 
 
-                
 
-              
+
+
 
                 foreach (LiegeplatzData item in liegeplatzListe)
                 {
-                    if(item.Laenge > selectedKunde.Yachtlaenge && item.Breite > selectedKunde.Yachtbreite && item.Tiefe > selectedKunde.Yachttiefe)
+                    if (item.Laenge > selectedKunde.Yachtlaenge && item.Breite > selectedKunde.Yachtbreite && item.Tiefe > selectedKunde.Yachttiefe)
                     {
                         liegeplatzListeForKunde.Add(item);
                     }
 
                 }
 
-               
-       
 
-                foreach(LiegeplatzData liegeplatz in liegeplatzListeForKunde)
+
+
+                foreach (LiegeplatzData liegeplatz in liegeplatzListeForKunde)
                 {
                     foreach (BuchungData item in buchungsListe)
                     {
-                     if(liegeplatz.Id == item.IdLiegeplatz)
+                        if (liegeplatz.Id == item.IdLiegeplatz)
                         {
                             if (CheckOverlap(startDate, endDate, item.Startdatum, item.Enddatum))
                             {
@@ -327,9 +304,9 @@ namespace Yachthafen_TB_CW_JJ
         private void setTagespreisText(double tagespreis)
         {
 
-                tagespreisText.Text = tagespreis.ToString() + "€";
+            tagespreisText.Text = tagespreis.ToString() + "€";
 
-      
+
         }
 
         private void resetTagspreisText()
@@ -352,15 +329,16 @@ namespace Yachthafen_TB_CW_JJ
             int timespan = ts.Days + 1;
             double gesamtpreis = timespan * tagespreis;
 
-            if(gesamtpreis > 0)
+            if (gesamtpreis > 0)
             {
                 gesamtpreisText.Text = gesamtpreis.ToString() + "€";
-            } else
+            }
+            else
             {
                 gesamtpreisText.Text = "Ungültiges Datum!";
             }
-          
-         }
+
+        }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -385,10 +363,10 @@ namespace Yachthafen_TB_CW_JJ
             }
 
 
-        
+
         }
 
-    
+
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             resetTagspreisText();
@@ -407,12 +385,9 @@ namespace Yachthafen_TB_CW_JJ
 
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
 
-        }
     }
 
-  
+
 }
 

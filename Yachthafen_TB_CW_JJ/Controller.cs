@@ -110,7 +110,7 @@ namespace Yachthafen_TB_CW_JJ
 
         public void deleteSelectedBuchung(int idBuchung)
         {
-            MySqlConnection myConn = new MySqlConnection("SERVER=localhost; DATABASE=yachthafen;UID=root;PASSWORD=root");
+            MySqlConnection myConn = new MySqlConnection("SERVER=localhost; DATABASE=yachthafen;UID=root;PASSWORD=");
             string cmdText = "DELETE FROM buchung WHERE id = @idbuchung";
             MySqlCommand cmd = new MySqlCommand(cmdText, myConn);
             cmd.Parameters.AddWithValue("@idbuchung", idBuchung);

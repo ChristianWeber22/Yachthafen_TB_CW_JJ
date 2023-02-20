@@ -63,8 +63,6 @@
             this.liegeplatzTable.RowHeadersWidth = 51;
             this.liegeplatzTable.Size = new System.Drawing.Size(1027, 373);
             this.liegeplatzTable.TabIndex = 3;
-            this.liegeplatzTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.liegeplatzTable_CellContentClick);
-            this.liegeplatzTable.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.liegeplatzTable_CellFormatting);
             // 
             // groupBox2
             // 

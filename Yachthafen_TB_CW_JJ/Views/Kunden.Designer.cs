@@ -119,7 +119,6 @@ namespace Yachthafen_TB_CW_JJ
             this.Name = "Kunden";
             this.ShowIcon = false;
             this.Text = "Kundenverwaltung";
-            this.Load += new System.EventHandler(this.form4_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kundenTable)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
